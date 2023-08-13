@@ -29,9 +29,21 @@ const employeeSlice = createSlice({
         ];
       },
     },
+    editEmployee(draftState, action) {
+      const { id, updatedEmployee } = action.payload;
+      const index = draftState.employees_records.findIndex(
+        emp => emp.id === Number(id)
+      );
+      if (index !== -1) {
+        draftState.employees_records[index] = {
+          ...draftState.employees_records[index],
+          ...updatedEmployee,
+        };
+      }
+    },
   },
 });
 
-export const { saveNewEmployee } = employeeSlice.actions;
+export const { saveNewEmployee, editEmployee } = employeeSlice.actions;
 
 export default employeeSlice.reducer;

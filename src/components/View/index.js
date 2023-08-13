@@ -46,6 +46,16 @@ const View = () => {
                     <td>{employee.firstName}</td>
                     <td>{employee.surname}</td>
                     <td>{employee.email}</td>
+                    <td>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          history.push(`/create?edit=${employee.id}`)
+                        }
+                      >
+                        Edit
+                      </button>
+                    </td>
                   </tr>
                 ))}
               </tbody>

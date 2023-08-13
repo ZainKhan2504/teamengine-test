@@ -1,32 +1,66 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useMemo } from "react";
 import { Formik } from "formik";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useHistory } from "react-router-dom";
 import { Flex, Header } from "../styled";
 import FormField from "./FormField";
 import FormButtons from "./FormButtons";
 import formValidationSchema from "./formValidationSchema";
-import { saveNewEmployee } from "../../redux/employees/actionCreators";
+import {
+  saveNewEmployee,
+  editEmployee,
+} from "../../redux/employees/actionCreators";
 
 const Create = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
+  const location = useLocation();
+  const employees = useSelector(state => state.employees.employees_records);
+
+  const queryParams = new URLSearchParams(location.search);
+  const editEmployeeId = queryParams.get("edit");
+
+  const initialFormValues = useMemo(() => {
+    if (editEmployeeId) {
+      const employee = employees.find(emp => emp.id === Number(editEmployeeId));
+      if (employee) {
+        return {
+          firstName: employee.firstName,
+          surname: employee.surname,
+          email: employee.email,
+          jobTitle: employee.jobTitle,
+        };
+      }
+    }
+    return {
+      firstName: "",
+      surname: "",
+      email: "",
+      jobTitle: "",
+    };
+  }, [editEmployeeId, employees]);
+
   const submitForm = useCallback(
     employee => {
-      dispatch(saveNewEmployee(employee));
+      if (editEmployeeId) {
+        dispatch(editEmployee(editEmployeeId, employee));
+      } else {
+        dispatch(saveNewEmployee(employee));
+      }
+      history.push("/view");
     },
-    [dispatch]
+    [dispatch, editEmployeeId, history]
   );
 
   return (
     <>
-      <Header>Create new employee</Header>
+      <Header>
+        {editEmployeeId ? "Edit Employee" : "Create new employee"}
+      </Header>
       <Formik
         validationSchema={formValidationSchema}
         onSubmit={submitForm}
-        initialValues={{
-          firstName: "",
-          surname: "",
-          email: "",
-        }}
+        initialValues={initialFormValues}
       >
         <Flex alignItems="center" justifyContent="center" height="100%">
           <Flex alignItems="left" direction="column" width="300px">
