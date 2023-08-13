@@ -33,6 +33,7 @@ const Create = () => {
             <FormField name="firstName" placeholder="First name" />
             <FormField name="surname" placeholder="Surname" />
             <FormField name="email" placeholder="Email" />
+            <FormField name="jobTitle" placeholder="Job Title" />
             <FormButtons />
           </Flex>
         </Flex>

@@ -1,4 +1,5 @@
 import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import WebFont from "webfontloader";
 import Overview from "../Overview";
