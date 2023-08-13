@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ReactPaginate from "react-paginate";
 import { Box, Button, Flex, Header } from "../styled";
+import { deleteEmployee } from "../../redux/employees/actionCreators";
 
 const ITEMS_PER_PAGE = 5;
 
 const View = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
   const employees = useSelector(state => state.employees.employees_records);
   const [currentPage, setCurrentPage] = useState(0);
 
@@ -54,6 +56,14 @@ const View = () => {
                         }
                       >
                         Edit
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          dispatch(deleteEmployee(employee.id));
+                        }}
+                      >
+                        Delete
                       </button>
                     </td>
                   </tr>

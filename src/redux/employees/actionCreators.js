@@ -8,3 +8,7 @@ export const saveNewEmployee = employee => dispatch => {
 export const editEmployee = (id, updatedEmployee) => dispatch => {
   dispatch(actions.editEmployee({ id, updatedEmployee }));
 };
+
+export const deleteEmployee = id => dispatch => {
+  dispatch(actions.deleteEmployee(id));
+};

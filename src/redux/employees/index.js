@@ -41,9 +41,16 @@ const employeeSlice = createSlice({
         };
       }
     },
+    deleteEmployee(draftState, action) {
+      const id = action.payload;
+      draftState.employees_records = draftState.employees_records.filter(
+        emp => emp.id !== Number(id)
+      );
+    },
   },
 });
 
-export const { saveNewEmployee, editEmployee } = employeeSlice.actions;
+export const { saveNewEmployee, editEmployee, deleteEmployee } =
+  employeeSlice.actions;
 
 export default employeeSlice.reducer;
