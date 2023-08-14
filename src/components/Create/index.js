@@ -29,6 +29,7 @@ const Create = () => {
           surname: employee.surname,
           email: employee.email,
           jobTitle: employee.jobTitle,
+          status: employee.status,
         };
       }
     }
@@ -37,6 +38,7 @@ const Create = () => {
       surname: "",
       email: "",
       jobTitle: "",
+      status: "",
     };
   }, [editEmployeeId, employees]);
 
@@ -51,6 +53,12 @@ const Create = () => {
     },
     [dispatch, editEmployeeId, history]
   );
+
+  const statusOptions = [
+    { value: "ACTIVE", label: "ACTIVE" },
+    { value: "LEAVE_OF_ABSENCE", label: "LEAVE_OF_ABSENCE" },
+    { value: "TERMINATED", label: "TERMINATED" },
+  ];
 
   return (
     <>
@@ -68,6 +76,11 @@ const Create = () => {
             <FormField name="surname" placeholder="Surname" />
             <FormField name="email" placeholder="Email" />
             <FormField name="jobTitle" placeholder="Job Title" />
+            <FormField
+              name="status"
+              placeholder="Status"
+              options={statusOptions}
+            />
             <FormButtons />
           </Flex>
         </Flex>

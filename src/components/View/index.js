@@ -39,6 +39,8 @@ const View = () => {
                   <th>First Name</th>
                   <th>Surname</th>
                   <th>Email</th>
+                  <th>Job Title</th>
+                  <th>Status</th>
                 </tr>
               </thead>
               <tbody>
@@ -48,6 +50,8 @@ const View = () => {
                     <td>{employee.firstName}</td>
                     <td>{employee.surname}</td>
                     <td>{employee.email}</td>
+                    <td>{employee.jobTitle}</td>
+                    <td>{employee.status}</td>
                     <td>
                       <button
                         type="button"
