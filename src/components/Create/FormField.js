@@ -5,10 +5,23 @@ import SelectField from "./styled/SelectField";
 import ErrorMessage from "./styled/ErrorMessage";
 import { Box } from "../styled";
 
-const FormField = ({ name, placeholder, options }) => {
+const FormField = ({ name, placeholder, options, type }) => {
   const { errors, touched } = useFormikContext();
 
   const renderInput = fieldProps => {
+    if (type === "date") {
+      return (
+        <input
+          type="date"
+          id={name}
+          name={name}
+          value={fieldProps.field.value}
+          onChange={fieldProps.field.onChange}
+          onBlur={fieldProps.field.onBlur}
+          className="custom-date-input"
+        />
+      );
+    }
     if (options) {
       return (
         <SelectField

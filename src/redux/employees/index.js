@@ -5,7 +5,7 @@ const defaultEmployee = {
   firstName: "Abe",
   surname: "Simpson",
   email: "abe.simpson@springfield.com",
-  birthDate: "1907-05-25",
+  dob: "1907-05-25",
   jobTitle: "Work grouch",
   status: "ACTIVE",
 };
@@ -20,7 +20,10 @@ const employeeSlice = createSlice({
   reducers: {
     saveNewEmployee: {
       prepare: employee => ({
-        payload: { ...employee, id: new Date().getTime() },
+        payload: {
+          ...employee,
+          id: new Date().getTime(),
+        },
       }),
       reducer(draftState, action) {
         draftState.employees_records = [

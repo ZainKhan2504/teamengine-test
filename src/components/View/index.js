@@ -40,6 +40,7 @@ const View = () => {
                   <th>Surname</th>
                   <th>Email</th>
                   <th>Job Title</th>
+                  <th>Birth Date</th>
                   <th>Status</th>
                 </tr>
               </thead>
@@ -51,6 +52,7 @@ const View = () => {
                     <td>{employee.surname}</td>
                     <td>{employee.email}</td>
                     <td>{employee.jobTitle}</td>
+                    <td>{employee.dob}</td>
                     <td>{employee.status}</td>
                     <td>
                       <button
@@ -86,6 +88,13 @@ const View = () => {
             containerClassName="pagination"
             activeClassName="active"
           />
+          <Button
+            marginRight="sm"
+            data-cy="viewEmployeesButton"
+            onClick={() => history.push("/")}
+          >
+            Home
+          </Button>
           <Button data-cy="backButton" onClick={() => history.goBack()}>
             Back
           </Button>

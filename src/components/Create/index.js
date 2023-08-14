@@ -29,6 +29,7 @@ const Create = () => {
           surname: employee.surname,
           email: employee.email,
           jobTitle: employee.jobTitle,
+          dob: employee.dob,
           status: employee.status,
         };
       }
@@ -38,6 +39,7 @@ const Create = () => {
       surname: "",
       email: "",
       jobTitle: "",
+      dob: "",
       status: "",
     };
   }, [editEmployeeId, employees]);
@@ -76,6 +78,7 @@ const Create = () => {
             <FormField name="surname" placeholder="Surname" />
             <FormField name="email" placeholder="Email" />
             <FormField name="jobTitle" placeholder="Job Title" />
+            <FormField name="dob" type="date" placeholder="Date of Birth" />
             <FormField
               name="status"
               placeholder="Status"
