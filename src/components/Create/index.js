@@ -78,7 +78,7 @@ const Create = () => {
             <FormField name="surname" placeholder="Surname" />
             <FormField name="email" placeholder="Email" />
             <FormField name="jobTitle" placeholder="Job Title" />
-            <FormField name="dob" type="date" placeholder="Date of Birth" />
+            <FormField name="dob" type="date" />
             <FormField
               name="status"
               placeholder="Status"

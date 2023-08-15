@@ -43,4 +43,28 @@ describe("Examine the creation of employees", () => {
       "Invalid email address"
     );
   });
+
+  // My Test
+
+  it("should fill out the form and submit successfully", () => {
+    const employeeData = {
+      firstName: "John",
+      surname: "Doe",
+      email: "john.doe@example.com",
+      jobTitle: "Developer",
+      dob: "1990-01-01",
+      status: "ACTIVE",
+    };
+
+    cy.get("[name=firstName]").type(employeeData.firstName);
+    cy.get("[name=surname]").type(employeeData.surname);
+    cy.get("[name=email]").type(employeeData.email);
+    cy.get("[name=jobTitle]").type(employeeData.jobTitle);
+    cy.get("[name=dob]").type(employeeData.dob);
+    cy.get("[name=status]").select(employeeData.status);
+
+    cy.get("button[type=submit]").click();
+
+    cy.url().should("eq", "http://localhost:3000/#/view");
+  });
 });

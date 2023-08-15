@@ -88,18 +88,10 @@ const View = () => {
             containerClassName="pagination"
             activeClassName="active"
           />
-          <Button
-            marginRight="sm"
-            data-cy="viewEmployeesButton"
-            onClick={() => history.push("/")}
-          >
+          <Button marginRight="sm" onClick={() => history.push("/")}>
             Home
           </Button>
-          <Button
-            marginRight="sm"
-            data-cy="viewEmployeesButton"
-            onClick={() => history.push("/create")}
-          >
+          <Button marginRight="sm" onClick={() => history.push("/create")}>
             Add Employee
           </Button>
           <Button data-cy="backButton" onClick={() => history.goBack()}>
