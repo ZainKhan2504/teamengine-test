@@ -95,6 +95,13 @@ const View = () => {
           >
             Home
           </Button>
+          <Button
+            marginRight="sm"
+            data-cy="viewEmployeesButton"
+            onClick={() => history.push("/create")}
+          >
+            Add Employee
+          </Button>
           <Button data-cy="backButton" onClick={() => history.goBack()}>
             Back
           </Button>

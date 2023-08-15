@@ -30,7 +30,17 @@ const employeeSlice = createSlice({
           ...draftState.employees_records,
           action.payload,
         ];
+        localStorage.setItem(
+          "employees",
+          JSON.stringify(draftState.employees_records)
+        );
       },
+    },
+    loadEmployeesFromLocalStorage(draftState) {
+      const storedEmployees = JSON.parse(localStorage.getItem("employees"));
+      if (storedEmployees) {
+        draftState.employees_records = storedEmployees;
+      }
     },
     editEmployee(draftState, action) {
       const { id, updatedEmployee } = action.payload;
@@ -42,6 +52,10 @@ const employeeSlice = createSlice({
           ...draftState.employees_records[index],
           ...updatedEmployee,
         };
+        localStorage.setItem(
+          "employees",
+          JSON.stringify(draftState.employees_records)
+        );
       }
     },
     deleteEmployee(draftState, action) {
@@ -49,11 +63,19 @@ const employeeSlice = createSlice({
       draftState.employees_records = draftState.employees_records.filter(
         emp => emp.id !== Number(id)
       );
+      localStorage.setItem(
+        "employees",
+        JSON.stringify(draftState.employees_records)
+      );
     },
   },
 });
 
-export const { saveNewEmployee, editEmployee, deleteEmployee } =
-  employeeSlice.actions;
+export const {
+  saveNewEmployee,
+  loadEmployeesFromLocalStorage,
+  editEmployee,
+  deleteEmployee,
+} = employeeSlice.actions;
 
 export default employeeSlice.reducer;

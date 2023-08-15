@@ -4,7 +4,7 @@ import {
   getDefaultMiddleware,
 } from "@reduxjs/toolkit";
 
-import employees from "./employees";
+import employees, { loadEmployeesFromLocalStorage } from "./employees";
 import global from "./global";
 
 const reducer = combineReducers({
@@ -17,4 +17,5 @@ const store = configureStore({
     thunk: true,
   }),
 });
+store.dispatch(loadEmployeesFromLocalStorage());
 export default store;
